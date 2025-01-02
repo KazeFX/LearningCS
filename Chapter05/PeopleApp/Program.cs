@@ -94,8 +94,11 @@ namespace PeopleApp
 
             WriteLine($"{fruitNamed.Name}, {fruitNamed.Number} there are.");
 
-            var thing1 = ("Neville", 2);
-            Write("test git");
+            var thing1 = ("Neville", 4);
+            WriteLine($"{thing1.Item1} has {thing1.Item2} children.");
+
+
+            
 
         }
     }
