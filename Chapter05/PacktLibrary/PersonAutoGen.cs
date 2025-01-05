@@ -41,10 +41,24 @@ namespace Packt.Shared
                         favoritePrimaryColor = value;
                         break;
                     default:
-                        throw new System.ArgumentException($"{value} is not async primary color." + "Choose from: red, green, blue.");
+                        throw new System.ArgumentException($"{value} is not a primary color." + "Choose from: red, green, blue.");
                 }
             }
         }
+
+        // indexers
+        public Person this[int index]
+        {
+            get
+            {
+                return Children[index]; // pass on to the List<T> indexer
+            }
+            set
+            {
+                Children[index] = value;
+            }
+        }
+
 
 
 

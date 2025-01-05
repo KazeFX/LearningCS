@@ -140,6 +140,19 @@ namespace PeopleApp
             WriteLine(sam.Origin);
             WriteLine(sam.Greeting);
             WriteLine(sam.Age);
+
+            sam.FavoriteIceCream = "Banana Split";
+            WriteLine($"{sam.Name}'s favorite ice cream is {sam.FavoriteIceCream}");
+            sam.FavoritePrimaryColor = "Red";
+            WriteLine(sam.FavoritePrimaryColor);
+
+            sam.Children.Add(new() { Name = "Charlie" });
+            sam.Children.Add(new() { Name = "Ella" });
+
+            WriteLine(sam.Children[0].Name);
+            WriteLine(sam.Children[1].Name);
+            WriteLine(sam[0].Name);
+            WriteLine(sam[1].Name);
         }
     }
 }
