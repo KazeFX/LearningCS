@@ -58,10 +58,5 @@ namespace Packt.Shared
                 Children[index] = value;
             }
         }
-
-
-
-
-
     }
 }
