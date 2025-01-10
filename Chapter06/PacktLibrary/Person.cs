@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace Packt.Shared
 {
-    public class Person : Object
+    public class Person : Object, IComparable<Person>
     {
         //fields
         public string? Name;
@@ -78,6 +78,12 @@ namespace Packt.Shared
                     Shout(this, EventArgs.Empty);
                 }
             }
+        }
+
+        public int CompareTo(Person? other)
+        {
+            if (Name is null) return 0;
+            return Name.CompareTo(other?.Name);
         }
     }
 }
