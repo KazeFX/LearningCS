@@ -80,12 +80,13 @@ namespace Packt.Shared
             }
         }
 
-        public int CompareTo(Person? other)
+        public int CompareTo(Person? other) 
         {
             if (Name is null) return 0;
             return Name.CompareTo(other?.Name);
         }
 
+        // overriden methods
         public override string ToString()
         {
             return $"{Name} is a {base.ToString()}";
