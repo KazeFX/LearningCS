@@ -21,5 +21,9 @@ namespace Packt.Shared
 
         }
 
+        public override string ToString()
+        {
+            return $"{Name}'s code is {EmployeeCode}";
+        }
     }
 }

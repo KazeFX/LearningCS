@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32.SafeHandles;
 using Packt.Shared;
+using System.Net.NetworkInformation;
 using static System.Console;
 
 namespace PeopleApp
@@ -115,6 +116,29 @@ namespace PeopleApp
             WriteLine($"{john.Name} was hired on {john.HireDate:dd/MM/yy}");
 
             WriteLine(john.ToString());
+
+            Employee aliceInEmployee = new()
+            { Name = "Alice", EmployeeCode = "AA123" };
+
+            Person aliceInPerson = aliceInEmployee;
+            aliceInEmployee.WriteToConsole();
+            aliceInPerson.WriteToConsole();
+            WriteLine(aliceInEmployee.ToString());
+            WriteLine(aliceInPerson.ToString());
+
+            if (aliceInPerson is Employee)
+            {
+                WriteLine($"{nameof(aliceInPerson)} IS an Employee");
+                Employee explicitAlice = (Employee)aliceInPerson;
+                // safely do something with explicitAlice
+            }
+
+            Employee? aliceAsEmployee = aliceInPerson as Employee; // could be null
+
+            if (aliceAsEmployee != null)
+            {
+                WriteLine($"{nameof(aliceAsEmployee)} AS an Employee");
+            }
         }
     }
 }
