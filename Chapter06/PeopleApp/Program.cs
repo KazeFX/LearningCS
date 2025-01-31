@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32.SafeHandles;
 using Packt.Shared;
 using System.Net.NetworkInformation;
+using System.Runtime.CompilerServices;
 using static System.Console;
 
 namespace PeopleApp
@@ -139,6 +140,39 @@ namespace PeopleApp
             {
                 WriteLine($"{nameof(aliceAsEmployee)} AS an Employee");
             }
+
+
+
+            try
+            {
+                john.TimeTravel(when: new(1999, 12, 31));
+                john.TimeTravel(when: new(1950, 12, 25));
+            }
+            catch (PersonException ex)
+            {
+                WriteLine(ex.Message);
+            }
+
+            string email1 = "pamela@test.com";
+            string email2 = "ian&test.com";
+
+            WriteLine("{0} is a valid e-mail address: {1}",
+                arg0: email1,
+                arg1: StringExtensions.IsValidEmail(email1));
+
+            WriteLine("{0} is a valid e-mail address: {1}",
+                arg0: email2,
+                arg1: StringExtensions.IsValidEmail(email2));
+
+            WriteLine("{0} is a valid e-mail address: {1}",
+                arg0: email1,
+                arg1: email1.IsValidEmail());
+
+            WriteLine("{0} is a valid e-mail address: {1}",
+                arg0: email2,
+                arg1: email2.IsValidEmail());
+
+
         }
     }
 }
