@@ -6,5 +6,14 @@ Console.WriteLine($"{name} is {height} metres tall.");
 int length2 = ((string)name).Length; // Cast name to a string.
 Console.WriteLine($"{name} has {length2} characters.");
 
+dynamic something;
 
- 8
+// Storing an array of int values in a dynamic object.
+// An array of any type has a length property.
+something = new[] { 3, 5, 7 };
+// Storing an int in a dynamic object.
+// int does not have a Length property.
+something = 12;
+// Storing a string in a dynamic object.
+// string has a Length property.
+something = "Ahmed";
