@@ -17,6 +17,7 @@ Assembly? myApp = Assembly.GetEntryAssembly();
 // If the previous line returned nothing then end the app.
 if (myApp is null) return;
 
+
 // Loop through the assemblies that my app references.
 foreach (AssemblyName name in myApp.GetReferencedAssemblies())
 {

@@ -17,3 +17,6 @@ something = 12;
 // Storing a string in a dynamic object.
 // string has a Length property.
 something = "Ahmed";
+
+
+test
