@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelectionStatements", "Sele
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IterationStatements", "IterationStatements\IterationStatements.csproj", "{AD218751-B712-4C0C-AE6C-9944F8DB4A12}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arrays", "Arrays\Arrays.csproj", "{DEF81A34-0829-43D2-AE94-859E43F54819}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CastingConverting", "CastingConverting\CastingConverting.csproj", "{4E059F8A-3826-4073-B71F-BF929EFA5BB6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{AD218751-B712-4C0C-AE6C-9944F8DB4A12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD218751-B712-4C0C-AE6C-9944F8DB4A12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD218751-B712-4C0C-AE6C-9944F8DB4A12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEF81A34-0829-43D2-AE94-859E43F54819}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEF81A34-0829-43D2-AE94-859E43F54819}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEF81A34-0829-43D2-AE94-859E43F54819}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEF81A34-0829-43D2-AE94-859E43F54819}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E059F8A-3826-4073-B71F-BF929EFA5BB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E059F8A-3826-4073-B71F-BF929EFA5BB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E059F8A-3826-4073-B71F-BF929EFA5BB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E059F8A-3826-4073-B71F-BF929EFA5BB6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
