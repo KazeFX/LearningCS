@@ -6,6 +6,14 @@ partial class Program
     {
         OutputEncoding = System.Text.Encoding.UTF8;
 
-        if 
+        if (!useComputerCulture)
+        {
+            CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo(culture);
+        }
+
+        if (showCulture)
+        {
+            WriteLine($"Current culture: {CultureInfo.CurrentCulture.DisplayName}.");
+        }
     }
 }
