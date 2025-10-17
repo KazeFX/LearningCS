@@ -39,3 +39,31 @@ WriteLine(format: "{0}'s favorite wonder is {1}. It's integer is {2}.",
     arg0: bob.Name,
     arg1: bob.FavoriteAncientWonder,
     arg2: (int)bob.FavoriteAncientWonder);
+
+bob.BucketList = WondersOfTheAncientWorld.HangingGardensOfBabylon | WondersOfTheAncientWorld.MausoleumAtHalicarnassus;
+
+// bob.BucketList = (WondersOfTheAncientWorld)18;
+
+WriteLine($"{bob.Name}'s bucket list is {bob.BucketList}");
+
+// Works with all versions of C#
+Person alfred = new Person();
+alfred.Name = "Alfred";
+bob.Children.Add(alfred);
+
+// Works with C# 3 and later.
+bob.Children.Add(new Person { Name = "Bella" });
+
+// Works with C# 9 and later.
+bob.Children.Add(new() { Name = "Zoe" });
+
+WriteLine($"{bob.Name} has {bob.Children.Count} children.");
+
+for (int childIndex = 0; childIndex < bob.Children.Count; childIndex++)
+{
+    WriteLine($"> {bob.Children[childIndex].Name}");
+}
+
+foreach (Person child in bob.Children) {
+    WriteLine($"{child.Name}");
+}

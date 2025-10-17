@@ -9,6 +9,8 @@ public class Person : object
     public string? Name; // ? means it can be null.
     public DateTimeOffset Born;
     public WondersOfTheAncientWorld FavoriteAncientWonder;
+    public WondersOfTheAncientWorld BucketList;
+    public List<Person> Children = new();
 
     #endregion
 
