@@ -67,3 +67,12 @@ for (int childIndex = 0; childIndex < bob.Children.Count; childIndex++)
 foreach (Person child in bob.Children) {
     WriteLine($"{child.Name}");
 }
+
+BankAccount.InterestRate = 0.012M; // Store a shared value in static field.
+
+BankAccount jonesAccount = new();
+jonesAccount.AccountName = "Mrs. Jones";
+jonesAccount.Balance = 2400;
+WriteLine(format: "{0} earned {1:C} interest.",
+    arg0: jonesAccount.AccountName,
+    arg1: jonesAccount.Balance * BankAccount.InterestRate);
