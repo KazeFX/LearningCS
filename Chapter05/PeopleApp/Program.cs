@@ -71,8 +71,59 @@ foreach (Person child in bob.Children) {
 BankAccount.InterestRate = 0.012M; // Store a shared value in static field.
 
 BankAccount jonesAccount = new();
-jonesAccount.AccountName = "Mrs. Jones";
+jonesAccount.AccountName = "Mrs. Terra";
 jonesAccount.Balance = 2400;
 WriteLine(format: "{0} earned {1:C} interest.",
     arg0: jonesAccount.AccountName,
     arg1: jonesAccount.Balance * BankAccount.InterestRate);
+
+BankAccount gerrierAccount = new();
+gerrierAccount.AccountName = "Ms. Tifa";
+gerrierAccount.Balance = 98;
+WriteLine(format: "{0} earned {1:C} interest.",
+    arg0: gerrierAccount.AccountName,
+    arg1: gerrierAccount.Balance * BankAccount.InterestRate);
+
+WriteLine($"{bob.Name} is a {Person.Species}");
+WriteLine($"{bob.Name} was born on {bob.HomePlanet}.");
+
+//Book book = new()
+//{
+//    Isbn = "344-1337133713137",
+//    Title = "Get out of My Swamp"
+//};
+
+Book book = new(isbn: "144-124124124124", title: ":D")
+{
+    Author = "me :D",
+    PageCount = 1337
+};
+
+WriteLine("{0}: {1} written by {2} has {3:N0} pages.",
+    book.Isbn, book.Title, book.Author, book.PageCount);
+
+Person blankPerson = new();
+
+WriteLine(format: "{0} of {1} was created at {2:hh:mm:ss} on a {2:dddd}.",
+    arg0: blankPerson.Name,
+    arg1: blankPerson.HomePlanet,
+    arg2: blankPerson.Instantiated);
+
+Person barry = new(initialName: "Barret", homePlanet: "Gaia");
+
+WriteLine(format: "{0} of {1} was created at {2:hh:mm:ss} on a {2:dddd}.",
+    arg0: barry.Name,
+    arg1: barry.HomePlanet,
+    arg2: barry.Instantiated);
+
+bob.WriteToConsole();
+WriteLine(bob.GetOrigin());
+WriteLine(bob.SayHello());
+WriteLine(bob.SayHello("Aerith"));
+WriteLine(bob.stabbyStab("Bob"));
+
+WriteLine(bob.OptionalParameters());
+WriteLine(bob.OptionalParameters(3, "Jump!", 98.5));
+
+WriteLine(bob.OptionalParameters(3, number: 52.7, command: "Hide!"));
+WriteLine(bob.OptionalParameters(3, "Poke!", active: false));
