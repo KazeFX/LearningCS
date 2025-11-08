@@ -1,4 +1,5 @@
 ﻿using Packt.Shared;
+using Fruit = (string Name, int Number); // Aliasing a tuple type.
 
 ConfigureConsole(); // Setts current culture to US English.
 
@@ -14,6 +15,8 @@ WriteLine(bob); // Implicit call to ToString();
 //WriteLine(bob.ToString()); // Does the same thing.
 
 bob.Name = "Bob Smith";
+
+
 
 bob.Born = new DateTimeOffset(
     year: 1965, month: 12, day: 22,
@@ -122,8 +125,93 @@ WriteLine(bob.SayHello());
 WriteLine(bob.SayHello("Aerith"));
 WriteLine(bob.stabbyStab("Bob"));
 
-WriteLine(bob.OptionalParameters());
+WriteLine(bob.OptionalParameters(command: "Sneak!", count: 3));
 WriteLine(bob.OptionalParameters(3, "Jump!", 98.5));
 
 WriteLine(bob.OptionalParameters(3, number: 52.7, command: "Hide!"));
 WriteLine(bob.OptionalParameters(3, "Poke!", active: false));
+
+int a = 10;
+int b = 20;
+int c = 30;
+int d = 40;
+
+WriteLine($"Before: a={a}, b={b}, c={c}, d={d}");
+
+bob.PassingParameters(a, b, ref c, out d);
+
+WriteLine($"After: a={a}, b={b}, c={c}, d={d}");
+
+int e = 50;
+int f = 60;
+int g = 70;
+WriteLine($"Before: e={e}, f={f}, g={g}, h = ?");
+
+// Simplified C# 7 or later syntax for the out parameter.
+bob.PassingParameters(e, f, ref g, out int h);
+WriteLine($"After: e={e}, f={f}, g={g}, h={h}");
+
+bob.ParamsParameters("Sum using commas", 3, 6, 1, 2);
+bob.ParamsParameters("Sum using collection expression", [3, 6, 1, 2]);
+bob.ParamsParameters("Sum using explicit array", new int[] { 3, 6, 1, 2 });
+bob.ParamsParameters("Sum (empty)");
+
+(string, int) fruit = bob.GetFruit();
+WriteLine($"{fruit.Item1}, {fruit.Item2} there are.");
+
+//var fruitNamed = bob.GetNamedFruit();
+//WriteLine($"There are {fruitNamed.Number} {fruitNamed.Name}");
+
+Fruit fruitNamed = bob.GetNamedFruit();
+WriteLine($"There are {fruitNamed.Number} {fruitNamed.Name}");
+
+var thing1 = ("Tifa", 4);
+WriteLine($"{thing1.Item1} has {thing1.Item2} materia.");
+
+var thing2 = (bob.Name, bob.Children.Count);
+WriteLine($"{thing2.Name} has {thing2.Count} children.");
+
+(string fruitName, int fruitNumber) = bob.GetNamedFruit();
+WriteLine($"Deconstructed tuble: {fruitName}, {fruitNumber}");
+
+var (name1, dob1) = bob; // Implicitly calls the Deconstruct method.
+WriteLine($"Deconstructed person: {name1}, {dob1}");
+
+var (name2, dob2, fav2) = bob;
+WriteLine($"Deconstructed person: {name2}, {dob2}, {fav2}");
+
+int number = 5;
+
+try
+{
+    WriteLine($"{number}! is {Person.Factorial(number)}");
+}
+catch (Exception ex)
+{
+    WriteLine($"{ex.GetType()} says {ex.Message} number was {number}.");
+}
+
+Person sam = new()
+{
+    Name = "Sam",
+    Born = new(1987, 6, 20, 0, 0, 0, TimeSpan.Zero)
+};
+
+WriteLine(sam.Origin);
+WriteLine(sam.Greeting);
+WriteLine(sam.Age);
+
+sam.FavoriteIceCream = "Chocolate Fudge";
+WriteLine($"Sam's favorite ice-cream flavor is {sam.FavoriteIceCream}.");
+
+string color = "Red";
+
+try
+{
+    sam.FavoritePrimaryColor = color;
+    WriteLine($"Sam's favorite primary color is {sam.FavoritePrimaryColor}.");
+}
+catch (Exception ex)
+{
+    WriteLine("Tried to set {0} to '{1}': {2}", nameof(sam.FavoritePrimaryColor), color, ex.Message);
+}
