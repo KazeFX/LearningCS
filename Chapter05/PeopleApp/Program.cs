@@ -215,3 +215,117 @@ catch (Exception ex)
 {
     WriteLine("Tried to set {0} to '{1}': {2}", nameof(sam.FavoritePrimaryColor), color, ex.Message);
 }
+
+bob.FavoriteAncientWonder = (WondersOfTheAncientWorld)8;
+WriteLine($"Bob likes {bob.FavoriteAncientWonder}");
+
+sam.Children.Add(new() { Name = "Captain Kirk", Born = new(2000, 3, 18, 0, 0, 0, TimeSpan.Zero) });
+
+sam.Children.Add(new() { Name = "Picard", Born = new(2020, 12, 12, 0, 0, 0, TimeSpan.Zero) });
+
+// Get using Children list.
+WriteLine($"Sam's first child is {sam.Children[0].Name}");
+WriteLine($"Sam's second child is {sam.Children[1].Name}");
+
+// Get using the int indexer.
+WriteLine($"Sam's first child is {sam[0].Name}");
+WriteLine($"Sam's second child is {sam[1].Name}");
+
+// Get using the string indexer.
+WriteLine($"Sam's child named Picard is {sam["Picard"].Age} years old.");
+
+// An array containing a mix of passenger types.
+Passenger[] passengers =
+{
+    new FirstClassPassenger {Airmiles = 1_1419, Name = "MisterVFDC"},
+    new FirstClassPassenger {Airmiles = 16_562, Name = "Rich"},
+    new BusinessClassPassenger {Name = "Doctor Daniel Jackson"},
+    new CoachClassPassenger {CarryOnKG = 25.5, Name = "supersonicsjm"},
+    new CoachClassPassenger {CarryOnKG = 0, Name = "Gandalf"},
+};
+
+foreach (Passenger passenger in passengers)
+{
+    decimal flightCost = passenger switch
+    {
+        //FirstClassPassenger p when p.Airmiles > 35_000 => 1_500M,
+        //FirstClassPassenger p when p.Airmiles > 15_000 => 1_1750M,
+        //FirstClassPassenger _ => 2_000M,
+        //FirstClassPassenger p => p.Airmiles switch
+        //{
+        //    > 35_000 => 1_500M,
+        //    > 15_000 => 1_750M,
+        //    _        => 2_000M
+        //},
+        
+        // relational pattern with property pattern && nested switch expressions
+        FirstClassPassenger { Airmiles: > 35000 } => 1500M,
+        FirstClassPassenger { Airmiles: > 15000 } => 1750M,
+        FirstClassPassenger                       => 2000M,
+
+
+        BusinessClassPassenger _ => 1_000M,
+        CoachClassPassenger p when p.CarryOnKG < 10.0 => 500M,
+        CoachClassPassenger _ => 650M,
+        _ => 800M
+    };
+    WriteLine($"Flight costs {flightCost:C} for {passenger}");
+}
+
+ImmutablePerson jeff = new()
+{
+    FirstName = "Jeff",
+    LastName = "The Landshark"
+};
+//jeff.FirstName = "Harry";
+
+ImmutableVehicle car = new()
+{
+    Brand = "Nissan GT-R 2002",
+    Color = "Skyline Blue",
+    Wheels = 3
+};
+ImmutableVehicle repaintedCar = car with { Color = "Polymetallic Grey" };
+WriteLine($"Original car color was {car.Color}.");
+WriteLine($"New car color is {repaintedCar.Color}.");
+
+AnimalClass ac1 = new() { Name = "T-REX" };
+AnimalClass ac2 = new() { Name = "T-REX" };
+WriteLine($"ac1 == ac2: {ac1 == ac2}");
+
+AnimalRecord ar1 = new() { Name = "RAPTOR" };
+AnimalRecord ar2 = new() { Name = "RAPTOR" };
+WriteLine($"ar1 == ar2: {ar1 == ar2}");
+
+int number1 = 3;
+int number2 = 3;
+WriteLine($"number1: {number1}, number2: {number2}");
+WriteLine($"number1 == number2: {number1 == number2}");
+
+Person p1 = new() { Name = "Kevin" };
+Person p2 = new() { Name = "Kevin" };
+WriteLine($"p1: {p1}, p2: {p2}");
+WriteLine($"p1.Name: {p1.Name}, p2.Name: {p2.Name}");
+WriteLine($"p1 == p2: {p1 == p2}");
+
+Person p3 = p1;
+WriteLine($"p3: {p3}");
+WriteLine($"p3.Name: {p3.Name}");
+WriteLine($"p1 == p3: {p1 == p3}");
+
+// string is the only class reference type implemented to act like a value type for equality.
+WriteLine($"p1.Name: {p1.Name}, p2.Name: {p2.Name}");
+WriteLine($"p1.Name == p2.Name: {p1.Name == p2.Name}");
+
+ImmutableAnimal oscar = new("Oscar", "Dog");
+var (who, what) = oscar; // Calls the Deconstruct method.
+WriteLine($"{who} is a {what}");
+
+Headset vp = new("Apple", "Vision Pro");
+WriteLine($"{vp.ProductName} is made by {vp.Manufacturer}");
+
+Headset holo = new();
+WriteLine($"{holo.ProductName} is made by {holo.Manufacturer}");
+
+Headset mq = new() { Manufacturer = "Meta", ProductName = "Quest 3" };
+WriteLine($"{mq.ProductName} is made by {mq.Manufacturer}");

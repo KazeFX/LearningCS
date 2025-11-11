@@ -24,8 +24,11 @@ public partial class Person
             }
             if (!Enum.IsDefined(typeof(WondersOfTheAncientWorld), value))
             {
-
+                throw new ArgumentException($"{value} is not a member of the WondersOfTheAncientWorld enum.",
+                    paramName: nameof(FavoriteAncientWonder));
             }
+
+            _favoriteAncientWonder = value;
         }
     }
 
@@ -75,4 +78,29 @@ public partial class Person
 
     #endregion
 
+
+    #region Indexers: Properties that use array syntax to access them.
+
+    public Person this[int index]
+    {
+        get
+        {
+            return Children[index]; // Pass on to the List<T> indexer.
+        }
+        set
+        {
+            Children[index] = value;
+        }
+
+    }
+
+    public Person this[string name]
+    {
+        get
+        {
+            return Children.Find(p => p.Name == name);
+        }
+    }
+
+    #endregion
 }
