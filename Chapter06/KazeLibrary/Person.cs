@@ -8,9 +8,9 @@ public class Person
     public DateTimeOffset Born { get; set; }
     public List<Person> Children { get; set; } = new();
     // Allow multiple partners to be stored for a person. ;-)
-    public List<Person> Partners { get; set; } = new();
+    public List<Person> Spouses { get; set; } = new();
     // A read-only property to show if a person is married to anyone.
-    public bool Married => Partners.Count > 0;
+    public bool Married => Spouses.Count > 0;
 
 
     #endregion
@@ -33,14 +33,14 @@ public class Person
         ArgumentNullException.ThrowIfNull(p1);
         ArgumentNullException.ThrowIfNull(p2);
 
-        if (p1.Partners.Contains(p2) || p2.Partners.Contains(p1))
+        if (p1.Spouses.Contains(p2) || p2.Spouses.Contains(p1))
         {
             throw new ArgumentException(string.Format("{0} is already married to {1}.",
                 arg0: p1.Name, arg1: p2.Name));
         }
 
-        p1.Partners.Add(p2);
-        p2.Partners.Add(p1);
+        p1.Spouses.Add(p2);
+        p2.Spouses.Add(p1);
     }
 
     public void Marry(Person partner)
@@ -48,17 +48,17 @@ public class Person
         Marry(this, partner); // "this" is the current person.
     }
 
-    public void OutputPartners()
+    public void OutputSpouses()
     {
         if (Married)
         {
-            string term = Partners.Count == 1 ? "person" : "people";
+            string term = Spouses.Count == 1 ? "person" : "people";
 
-            WriteLine($"{Name} is married to {Partners.Count} {term}");
+            WriteLine($"{Name} is married to {Spouses.Count} {term}");
 
-            foreach (Person partner in Partners)
+            foreach (Person spouse in Spouses)
             {
-                WriteLine($"    {partner.Name}");
+                WriteLine($"    {spouse.Name}");
             }
         }
         else
@@ -67,12 +67,19 @@ public class Person
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="p1"></param>
+    /// <param name="p2"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentException"></exception>
     public static Person Procreate(Person p1, Person p2)
     {
         ArgumentNullException.ThrowIfNull(p1);
         ArgumentNullException.ThrowIfNull(p2);
 
-        if (!p1.Partners.Contains(p2) && !p2.Partners.Contains(p1))
+        if (!p1.Spouses.Contains(p2) && !p2.Spouses.Contains(p1))
         {
             throw new ArgumentException(string.Format("{0} must be married to {1} to procreate with them.",
                 arg0: p1.Name, arg1: p2.Name));  //:D
@@ -91,9 +98,9 @@ public class Person
     }
 
     // Instance method to multiply.
-    public Person ProCreateWith(Person partner)
+    public Person ProCreateWith(Person spouse)
     {
-        return Procreate(this, partner);
+        return Procreate(this, spouse);
     }
 
     #endregion

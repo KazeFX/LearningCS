@@ -9,35 +9,37 @@ Person fahim = new()
 fahim.WriteToConsole();
 
 // Implementing functionality using methods.
-Person Isa = new() { Name = "Isa" };
-Person JackBauer = new() { Name = "Jack Bauer" };
-Person Picard = new() { Name = "Picard" };
+Person lamech = new() { Name = "Lamech" };
+Person adah = new() { Name = "Adah" };
+Person zillah = new() { Name = "Zillah" };
 
 // Call the instance method to marry Isa and Jackbauer
-Isa.Marry(JackBauer);
+lamech.Marry(adah);
 
 // Call the static method to marry Jackbauer and Picard.
-Person.Marry(Isa, Picard);
+Person.Marry(lamech, zillah);
 
-Isa.OutputPartners();
-JackBauer.OutputPartners();
-Picard.OutputPartners();
+lamech.OutputSpouses();
+adah.OutputSpouses();
+zillah.OutputSpouses();
 
 // Call the instance method to make a baby.
-Person baby1 = Isa.ProCreateWith(JackBauer);
-baby1.Name = "Jafar";
+Person baby1 = lamech.ProCreateWith(adah);
+baby1.Name = "Jabal";
 WriteLine($"{baby1.Name} was born on {baby1.Born}");
 
 // Call the static method to make a baby
-Person baby2 = Person.Procreate(Picard, Isa);
-baby2.Name = "Worf";
+Person baby2 = Person.Procreate(zillah, lamech);
+baby2.Name = "Tubalcain";
 
-Isa.WriteChildrenToConsole();
-JackBauer.WriteChildrenToConsole();
-Picard.WriteChildrenToConsole();
+adah.WriteChildrenToConsole();
+zillah.WriteChildrenToConsole();
+lamech.WriteChildrenToConsole();
 
-for (int i = 0; i < Isa.Children.Count; i++)
+for (int i = 0; i < lamech.Children.Count; i++)
 {
     WriteLine(format: "     {0}'s child #{1} is named \"{2}\".",
-        arg0: Isa.Name, arg1: i, arg2: Isa.Children[i].Name);
+        arg0: lamech.Name, arg1: i, arg2: lamech.Children[i].Name);
 }
+
+// Person.Marry(lamech, zillah)
