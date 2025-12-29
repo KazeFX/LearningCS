@@ -32,6 +32,9 @@ WriteLine($"{baby1.Name} was born on {baby1.Born}");
 Person baby2 = Person.Procreate(zillah, lamech);
 baby2.Name = "Tubalcain";
 
+// Use the * operator to "multiply".
+Person baby3 = lamech * adah;////////////////////////////////////
+
 adah.WriteChildrenToConsole();
 zillah.WriteChildrenToConsole();
 lamech.WriteChildrenToConsole();
@@ -43,3 +46,9 @@ for (int i = 0; i < lamech.Children.Count; i++)
 }
 
 // Person.Marry(lamech, zillah)
+
+if (lamech + zillah)
+{
+    WriteLine($"{lamech.Name} and {zillah.Name} successfully got married.");
+}
+
