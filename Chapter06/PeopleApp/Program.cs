@@ -55,9 +55,5 @@ internal class Program
 
         // Person.Marry(lamech, zillah)
 
-        if (lamech + zillah)
-        {
-            WriteLine($"{lamech.Name} and {zillah.Name} successfully got married.");
-        }
     }
 }
