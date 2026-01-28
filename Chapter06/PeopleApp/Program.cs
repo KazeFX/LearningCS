@@ -100,7 +100,25 @@ internal partial class Program
         vader.Poke();
         vader.Poke();
 
+        Person?[] people =
+        {
+            null,
+            new() { Name = "Darth Vader"},
+            new() { Name = "Nemesis"},
+            new() { Name = "Sadako"},
+            new() { Name = null},
+            new() { Name = "Vecna"}
+        };
 
+        OutputPeopleNames(people, "Initial list of people:");
+
+        Array.Sort(people);
+
+        OutputPeopleNames(people, "After sorting using Person's IComparable implementation:");
+
+        Array.Sort(people, new PersonComparer());
+
+        OutputPeopleNames(people, "After sorting using PersonComparer's IComparer implementation:");
 
     }
 }
