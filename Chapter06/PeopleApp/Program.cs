@@ -1,12 +1,12 @@
 ﻿using KazeLibrary;
 
-internal class Program
+internal partial class Program
 {
     private static void Main(string[] args)
     {
-        Person fahim = new()
+        Person vader = new()
         {
-            Name = "Fahim",
+            Name = "Vader",
             Born = new(year: 2005, month: 3, day: 25, hour: 0, minute: 0, second: 0, offset: TimeSpan.Zero)
         };
 
@@ -65,7 +65,7 @@ internal class Program
         lookupObject.Add(key: 1, value: "Alpha");
         lookupObject.Add(key: 2, value: "Beta");
         lookupObject.Add(key: 3, value: "Gamma");
-        lookupObject.Add(key: fahim, value: "Delta");
+        lookupObject.Add(key: vader, value: "Delta");
 
         int key = 2; // Look up the value that has 2 as its key.
 
@@ -74,9 +74,31 @@ internal class Program
             arg1: lookupObject[key]);
 
         WriteLine(format: "Key {0} has value: {1}",
-            arg0: fahim,
-            arg1: lookupObject[fahim]);
+            arg0: vader,
+            arg1: lookupObject[vader]);
 
+        // Define a generic lookup collection.
+        Dictionary<int, string> lookupIntString = new();
+        lookupIntString.Add(key: 1, value: "Alpha");
+        lookupIntString.Add(key: 2, value: "Beta");
+        lookupIntString.Add(key: 3, value: "Gamma");
+        lookupIntString.Add(key: 4, value: "Delta");
+
+        key = 3;
+
+        WriteLine(format: "Key {0} has value: {1}",
+            arg0: key,
+            arg1: lookupIntString[key]);
+
+        // Assign the method to the Shout delegate.
+        vader.Shout += Vader_Shout;
+        vader.Shout += Vader_Shout_2;
+
+        // Call the Poke method that evnetually raises the Shout event.
+        vader.Poke();
+        vader.Poke();
+        vader.Poke();
+        vader.Poke();
 
 
 
