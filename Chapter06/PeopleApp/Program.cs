@@ -120,5 +120,73 @@ internal partial class Program
 
         OutputPeopleNames(people, "After sorting using PersonComparer's IComparer implementation:");
 
+        Employee kevin = new()
+        {
+            Name = "Kevin",
+            Born = new(year: 1979, month: 3, day: 3,
+            hour: 0, minute: 0, second: 0, offset: TimeSpan.Zero)
+        };
+
+        kevin.WriteToConsole();
+        kevin.EmployeeCode = "T1000";
+        kevin.HireDate = new(year: 1997, month: 8, day: 29);
+        WriteLine($"{kevin.Name} was hired on {kevin.HireDate:yyyy-MM-dd}.");
+        WriteLine(kevin.ToString());
+
+        Employee aliceInEmployee = new() { Name = "Alice", EmployeeCode = "AA123" };
+        Person aliceInPerson = aliceInEmployee;
+        aliceInEmployee.WriteToConsole();
+        aliceInPerson.WriteToConsole();
+        WriteLine(aliceInEmployee.ToString());
+        WriteLine(aliceInPerson.ToString());
+
+        if (aliceInPerson is Employee)
+        {
+            WriteLine($"{nameof(aliceInPerson)} is an Employee.");
+
+            Employee explicitAlice = (Employee)aliceInPerson;
+
+            // Safe to manipulate explicitAlice.
+        }
+
+        Employee? aliceAsEmployee = aliceInPerson as Employee;
+
+        if (aliceAsEmployee is not null)
+        {
+            WriteLine($"{nameof(aliceInPerson)} as an Employee.");
+
+            // safe to manipulate alice.
+        }
+
+        try
+        {
+            kevin.TimeTravel(when: new(1999, 12, 31));
+            kevin.TimeTravel(when: new(1950, 12, 25));
+        }
+        catch (PersonException ex)
+        {
+            WriteLine(ex.Message);
+        }
+
+
+        string email1 = "darthvader@empire.com";
+        string email2 = "yoda%jedi.com";
+
+        WriteLine("{0} is a valid e-mail address: {1}",
+            arg0: email1,
+            arg1: StringExtensions.IsValidEmail(email1));
+
+        WriteLine("{0} is a valid e-mail address: {1}",
+            arg0: email2,
+            arg1: StringExtensions.IsValidEmail(email2));
+
+        WriteLine("{0} is a valid e-mail address: {1}",
+            arg0: email1,
+            arg1: email1.IsValidEmail());
+
+        WriteLine("{0} is a valid e-mail address: {1}",
+            arg0: email2,
+            arg1: email2.IsValidEmail());
+
     }
 }
