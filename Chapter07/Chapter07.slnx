@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="AotConsole/AotConsole.csproj" Id="1a668b6c-553c-46f7-9ced-a6ef64d07aa1" />
   <Project Path="AssembliesAndNamespaces/AssembliesAndNamespaces.csproj" />
   <Project Path="DotNetEverywhere/DotNetEverywhere.csproj" />
   <Project Path="SharedLibrary/SharedLibrary.csproj" />

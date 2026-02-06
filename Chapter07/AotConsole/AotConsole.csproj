@@ -5,18 +5,13 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <PublishAot>true</PublishAot>
+    <InvariantGlobalization>true</InvariantGlobalization>
   </PropertyGroup>
+
 
   <ItemGroup Label="To simplify use of Console methods.">
     <Using Include="System.Console" Static="true" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Using Remove="System" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
   </ItemGroup>
 
 </Project>
