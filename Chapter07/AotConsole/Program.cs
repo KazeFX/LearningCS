@@ -10,4 +10,4 @@ WriteLine("OS version: {0}.", Environment.OSVersion);
 Write("Press any key to exit.");
 ReadKey(intercept: true); // Do not output the key that was pressed.
 
-AssemblyBuilder ab = AssemblyBuilder.DefineDynamicAssembly(new AssemblyName("MyAssembly"), AssemblyBuilderAccess.Run);
+//AssemblyBuilder ab = AssemblyBuilder.DefineDynamicAssembly(new AssemblyName("MyAssembly"), AssemblyBuilderAccess.Run);

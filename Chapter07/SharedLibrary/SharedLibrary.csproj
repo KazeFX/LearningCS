@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>12</LangVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageId>Packt.CSdotnet.SharedLibrary</PackageId>
+    <PackageId>Kaze.Packt.CSdotnet.SharedLibrary</PackageId>
     <PackageVersion>9.0.0.0</PackageVersion>
     <Title>C# 13 and .NET 9 Shared Library</Title>
     <Authors>Mark J Price</Authors>
