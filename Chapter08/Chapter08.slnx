@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="WorkingWithNumbers/WorkingWithNumbers.csproj" />
+  <Project Path="WorkingWithText/WorkingWithText.csproj" Id="79f71d13-64ff-4135-986d-8546f22c9c91" />
 </Solution>

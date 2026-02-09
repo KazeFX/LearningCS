@@ -68,3 +68,16 @@ Guid g = Guid.NewGuid();
 WriteLine($"Random GUID: {g}");
 
 byte[] guidAsBytes = g.ToByteArray();
+WriteLine("GUID as byte array: ");
+for (int i = 0; i < guidAsBytes.Length; i++)
+{
+    WriteLine($"{guidAsBytes[i]:X2} ");
+}
+WriteLine();
+
+WriteLine("Generating three v7 GUIDs:");
+for (int i = 0; i < 3; i++)
+{
+    Guid g7 = Guid.CreateVersion7(DateTimeOffset.UtcNow);
+    WriteLine($" {g7}.");
+}
