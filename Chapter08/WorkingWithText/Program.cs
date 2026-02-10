@@ -13,3 +13,11 @@ foreach (string item in citiesArray)
 {
     WriteLine($"    {item}");
 }
+
+string fullName = "Alan Shore";
+
+int indexOfTheSpace = fullName.IndexOf(' ');
+
+string firstName = fullName.Substring(startIndex: 0, length: indexOfTheSpace);
+
+string lastName = fullName.Substring(startIndex: indexOfTheSpace + 1);
