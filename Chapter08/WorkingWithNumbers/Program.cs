@@ -81,3 +81,4 @@ for (int i = 0; i < 3; i++)
     Guid g7 = Guid.CreateVersion7(DateTimeOffset.UtcNow);
     WriteLine($" {g7}.");
 }
+:D
