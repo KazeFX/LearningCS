@@ -52,7 +52,7 @@ for (int i = 0; i < arrayOfBytes.Length; i++)
 }
 WriteLine();
 
-string[] beatles = r.GetItems(choices: new[] { "John", "Paul", "George", "Ringo" }, length: 10);
+string[] beatles = r.GetItems(choices: new[] { "Vader", "Luke", "Solo", "Chewy" }, length: 10);
 
 Write("Random ten beatles:");
 foreach (string beatle in beatles)
