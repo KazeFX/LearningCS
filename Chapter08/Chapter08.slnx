@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="WorkingWithCollections/WorkingWithCollections.csproj" Id="5583466c-0671-4179-b32e-a66883579a91" />
   <Project Path="WorkingWithNumbers/WorkingWithNumbers.csproj" />
   <Project Path="WorkingWithRegularExpressions/WorkingWithRegularExpressions.csproj" Id="fe9fed65-5b3d-473c-91c4-5759cf6a7817" />
   <Project Path="WorkingWithText/WorkingWithText.csproj" Id="79f71d13-64ff-4135-986d-8546f22c9c91" />
