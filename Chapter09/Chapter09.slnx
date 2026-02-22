@@ -1,3 +1,5 @@
 <Solution>
   <Project Path="WorkingWithFIleSystems/WorkingWithFIleSystems.csproj" />
+  <Project Path="WorkingWIthRandomAccess/WorkingWIthRandomAccess.csproj" Id="f84c74be-0209-4e3c-9425-09c5525edfb6" />
+  <Project Path="WorkingWithStreams/WorkingWithStreams.csproj" Id="decbe2a1-cff1-4261-9684-89d5039fdf7c" />
 </Solution>
