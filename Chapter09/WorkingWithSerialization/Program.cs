@@ -1,5 +1,8 @@
 ﻿using System.Xml.Serialization; // To use XmlSerializer.
 using Kaze.Shared; // To use Person
+using FastJson = System.Text.Json.JsonSerializer;
+using System.Text.Json; // To use JsonSerializerOptions.
+using System.Text.Json.Schema; // To use JsonSchemaExperter.
 
 List<Person> people = new()
 {
@@ -47,3 +50,54 @@ using (FileStream stream = File.Create(path))
 } // Closes the stream.
 
 OutputFileInfo(path);
+
+SectionTitle("Deserializing XML files");
+
+using (FileStream xmlLoad = File.Open(path, FileMode.Open))
+{
+    // Deserialize and cast the object graph into a "List of Person"/
+    List<Person>? loadedPeople = xs.Deserialize(xmlLoad) as List<Person>;
+
+    if (loadedPeople is not null)
+    {
+        foreach (Person p in loadedPeople)
+        {
+            WriteLine("{0} has {1} children.", p.LastName, p.Children?.Count ?? 0);
+        }
+    }
+}
+
+SectionTitle("Serializing with JSON");
+
+// Create a file to write to.
+string jsonPath = Combine(CurrentDirectory, "people.json");
+
+using (StreamWriter jsonStream = File.CreateText(jsonPath))
+{
+    Newtonsoft.Json.JsonSerializer jss = new();
+
+    // Serialize the object graph into a string.
+    jss.Serialize(jsonStream, people);
+} // Closes the file stream and release resources.
+
+OutputFileInfo(jsonPath);
+
+SectionTitle("Deserializing JSON files");
+
+await using (FileStream jsonLoad = File.Open(jsonPath, FileMode.Open))
+{
+    // Deserialize object graph into a "List of Person".
+    List<Person>? loadedPeople = await FastJson.DeserializeAsync(utf8Json: jsonLoad, returnType: typeof(List<Person>)) as List<Person>;
+
+    if (loadedPeople is not null)
+    {
+        foreach (Person p in loadedPeople)
+        {
+            WriteLine("{0} has {1} children.", p.LastName, p.Children?.Count ?? 0);
+        }
+    }
+}
+
+SectionTitle("JSON schema experter");
+
+WriteLine(JsonSchemaExporter.GetJsonSchemaAsNode(JsonSerializerOptions.Default, typeof(Person)));

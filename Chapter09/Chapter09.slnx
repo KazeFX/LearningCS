@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="ControllingJson/ControllingJson.csproj" Id="ccb1457f-8a41-4887-8f88-e4f5702fc36c" />
   <Project Path="WorkingWithEncodings/WorkingWithEncodings.csproj" Id="8452b37a-1b0f-4f82-a6b6-13adb9c1655c" />
   <Project Path="WorkingWithFIleSystems/WorkingWithFIleSystems.csproj" />
   <Project Path="WorkingWIthRandomAccess/WorkingWIthRandomAccess.csproj" Id="f84c74be-0209-4e3c-9425-09c5525edfb6" />
